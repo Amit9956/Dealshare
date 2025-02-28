@@ -1,4 +1,6 @@
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
+import Details from "./Component/Details";
 import Footer from "./Component/Footer";
 import HomeNav from "./Component/HomeNav";
 import Section1 from "./Component/Section1";
@@ -12,29 +14,39 @@ import Section6 from "./Component/Section6";
 import Section7 from "./Component/Section7";
 import Section8 from "./Component/Section8";
 import Section9 from "./Component/Section9";
+import Home from "./Home";
+import About from "./Component/About";
+import Login from "./Component/Login";
+import PageNot from "./Component/PageNot";
+import { PiChatSlash } from "react-icons/pi";
 
 
 function App() {
-  return (<>
+
+    return (
+
+ 
      
-    <HomeNav/>
+<BrowserRouter>
+  <HomeNav />
+ 
+  <Routes>
 
-    <div className=" lg:pl-28 lg:w-[95%]">
-    <Section1/>
-    <Section3/>
-    <Section4/>
-    <Section5/>
-    <Section6/>
-    <Section7/>
-    <Section8/>
-    <Section9/>
-    <Section10/>
-    <Section11/>
-    <Section12/>
-    </div>
-    <Footer/>
+  <Route path="/" element={<Login/>}/>
+  <Route path="/home" element={<Home/>}/>
+    <Route path="/details" element={<Details />} />
+    <Route path="/abouts"  element={<About />}/>
 
-    </>);
+    <Route path="*"  element={<PageNot />}/>
+   
+   
+    
+  </Routes>
+
+  <Footer/>
+</BrowserRouter> 
+
+);
 }
 
 export default App;

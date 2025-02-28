@@ -11,7 +11,7 @@ import { CgProfile } from "react-icons/cg";
 
 const Footer = () => {
   return (<>
-    <div className='h-[70vh] lg:block hidden w-full  bg-[#F4F4F4]' >
+    <div className='h-[70vh] lg:block hidden w-full  mt-4 bg-[#F4F4F4]' >
     <div className='w-[90%] h-full ml-20 pt-12'>
     <div className='w-full h-[50%] flex justify-between'>
     <div className='w-[20%] h-full flex justify-center '>
@@ -86,7 +86,7 @@ const Footer = () => {
     </div>
     </div>
        
-        <div className='h-[10vh] lg:hidden  flex justify-evenly items-center w-full bg-white'>
+        <div className='h-[10vh] lg:hidden   flex justify-evenly  sticky bottom-0 z-50 items-center w-full bg-white'>
         <div className='mt-2'>
            <img className='pl-1' src='https://prod-web-static.dealshare.in/_next/static/media/dsLogo.266f84ad.svg'/>
            <p className='text-xs text-green-500 font-bold'>Home</p> 

@@ -1,7 +1,22 @@
 import React from "react";
 import ".././App.css"
 
+
 const Section1 = () => {
+
+  
+
+  const handleClick =()=>{
+
+
+    console.log("click")
+
+  
+
+  }
+
+
+
   return (
     <div className="w-" >
 
@@ -28,7 +43,7 @@ const Section1 = () => {
         </div>
         <div>
           <img className="lg:h-[30vh] opacity-100 h-[25vh] w-[115vw]" src="https://images.dealshare.in/1738325387245AllRegions-4.png" />
-        </div>
+        </div>``
         <div>
           <img className="lg:h-[30vh] opacity-100 h-[25vh] w-[115vw]" src="https://images.dealshare.in/1738325397823AllRegions.png" />
         </div>
@@ -76,7 +91,7 @@ const Section1 = () => {
       <div className="w-[85vw] h-full overflow-x-auto  custom-scrollbar  py-5 mx-auto">
       <div className=" lg:w-[170vw]  w-[300vw]">
         <div className="lg:h-[43vh]  lg:w-full w-[400vw]  lg:gap-8 gap-5 bg-white  flex ">
-          <div className="w-[23%]  lg:h-[40vh]  border border-gray-400 rounded-2xl ">
+          <div onClick={handleClick} className="w-[23%]  lg:h-[40vh]  border border-gray-400 rounded-2xl ">
            <div className=" bg-[#F2FFF0] flex justify-center lg:h-[65%] rounded-t-2xl">
               <img className="h-full" src="https://media.dealshare.in/img/offer/1731997878288:4107D94F0F_1.webp" />
            </div>
