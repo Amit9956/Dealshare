@@ -3,16 +3,22 @@ import { FaRegHeart, FaShareAlt } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoStarOutline } from 'react-icons/io5'
 import { MdCompare } from 'react-icons/md'
+import { useLocation } from 'react-router-dom'
 
 const Details = () => {
+
+  const {state} =useLocation()
+  
+  console.log("this is my state",state)
+  
   return (
     <div className='w-[90%] h-full mx-auto'>
      <div className='flex lg:flex-row flex-col w-auto h-full items-center'>
      <div className='lg:w-[30%] w-full h-full mt-10'>
-       <img className='w-auto h-full' src='https://media.dealshare.in/img/offer/7E9D1C1BBA_1.webp'/>
+       <img className='w-auto h-full' src={state?.data?.image}/>
      </div>
      <div className='lg:w-[35%] w-full '>
-     <p className='text-2xl font-semibold hover:text-blue-600'>Nutella Hazelnut Spread with Cocoa - 350 Gm</p>
+     <p className='text-2xl font-semibold hover:text-blue-600'>{state?.data?.cta?.ctaVal?.ctaParams?.collectionName}</p>
      <div className='flex mt-3 text-xl'>
      <IoStarOutline />
      <IoStarOutline />

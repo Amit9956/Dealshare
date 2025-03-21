@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaFacebook, FaGoogle, FaSquareTwitter } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -13,9 +14,9 @@ const Login = () => {
     <p className='text-2xl font-semibold text-white text-center mt-20 '>WELCOME TO LOGIN</p>
     <p className='text-sm font-semibold mt-5 text-white text-center'>Login using social media to get quick access</p>
     <div className='w-[80%] flex flex-col gap-y-3 mt-6 mx-auto'>
-    <button className='py-2 px-4 rounded-xl font-semibold text-white bg-blue-700'>Signin with facebook</button>
-    <button className='py-2 px-4 rounded-xl font-semibold text-white bg-blue-400'>Signin with twitter </button>
-    <button className='py-2 px-4 rounded-xl font-semibold text-white bg-red-600'>Signin with google</button>
+    <button className='py-2 px-2  rounded-xl   font-semibold text-white  bg-blue-700'><FaFacebook className=' inline-flex  mr-2 mb-1 text-xl ' />Signin with facebook</button>
+    <button className='py-2 px-4 rounded-xl font-semibold text-white bg-blue-400'><FaSquareTwitter className=' inline-flex  mr-2 text-xl mb-1  ' />Signin with twitter </button>
+    <button className='py-2 px-4 rounded-xl font-semibold text-white bg-red-600'><FaGoogle className=' inline-flex  mr-2 text-xl mb-1 ' />Signin with google</button>
     </div>
 
     </div>
@@ -24,7 +25,7 @@ const Login = () => {
     <p className='text-xs text-center'>Don't have an account?<span className='text-blue-500'>Sign Up Free!</span> </p>
     <div className='w-[80%] mx-auto flex flex-col gap-y-3 mt-12'>
      <input type='text'  name='Email' placeholder='Email address' className='py-2 px-4 hover:border-red-700 hover:border-solid outline-none border border-x  shadow-md shadow-gray-400 bg-white'/>
-     <input type='password'  name='Email' placeholder='Password' className='py-2 px-4 outline-none border hover:border-red-700 hover:border-solid border-x border-gray-500 shadow-md shadow-gray-400 bg-white'/>
+     <input type='password'  name='Email' placeholder='Password' className='py-2 px-4 hover:border-red-700 hover:border-solid outline-none border border-x  shadow-md shadow-gray-400 bg-white'/>
     </div>
     <div className='w-[80%] mx-auto mt-6 flex justify-between '>
      <p className='text-sm hover:text-red-600 '><input type='checkbox' name='for checking' className=''/>Remember me</p>

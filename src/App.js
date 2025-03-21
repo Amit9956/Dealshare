@@ -19,6 +19,8 @@ import About from "./Component/About";
 import Login from "./Component/Login";
 import PageNot from "./Component/PageNot";
 import { PiChatSlash } from "react-icons/pi";
+import Mobile from "./Component/Mobile";
+import Item1 from "./Component/Item1";
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
   <Route path="/home" element={<Home/>}/>
     <Route path="/details" element={<Details />} />
     <Route path="/abouts"  element={<About />}/>
+    <Route path="/all" element={<Mobile/>}/>
+    <Route path="/view" element={<Item1/>}/>
 
     <Route path="*"  element={<PageNot />}/>
    

@@ -1,12 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Section4 = () => {
+
+   const navigate = useNavigate()
   return (
     <div className='w-full h-full '>
 
         <div className='w-full h-full py-5'>
-        <div>
+        <div className='flex justify-between'>
             <p className='text-2xl pl-3 py-5 font-bold'>Most Purchased</p>
+            <p className='text-2xl pl-3 py-5 font-bold' onClick={()=>navigate("/view")}>View All</p>
         </div>
 
         <div className="w-[85vw] h-full overflow-x-auto  custom-scrollbar   py-5 mx-auto">

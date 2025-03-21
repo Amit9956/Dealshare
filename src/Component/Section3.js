@@ -69,8 +69,9 @@ const Section3 = () => {
     </div>
 
     <div className=' h-full py-5'>
-    <div>
+    <div className='flex justify-between'>
     <p className='text-2xl  pl-3 py-8 font-bold'>Most Loved</p>
+    <p className='text-2xl   py-8 font-bold' onClick={()=>navigate("/all")}>See More</p>
     </div>
 
     <div className="w-[85vw] h-full overflow-x-auto  custom-scrollbar py-5 mx-auto">
