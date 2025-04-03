@@ -8,8 +8,17 @@ import { FaLinkedin } from "react-icons/fa6";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { BsHandbag } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+
+  const navigate = useNavigate()
+
+  const handle6 = () => {
+
+    navigate("/home")
+  }
+
   return (<>
     <div className='h-[70vh] lg:block hidden w-full  mt-4 bg-[#F4F4F4]' >
     <div className='w-[90%] h-full ml-20 pt-12'>
@@ -88,7 +97,7 @@ const Footer = () => {
        
         <div className='h-[10vh] lg:hidden   flex justify-evenly  sticky bottom-0 z-50 items-center w-full bg-white'>
         <div className='mt-2'>
-           <img className='pl-1' src='https://prod-web-static.dealshare.in/_next/static/media/dsLogo.266f84ad.svg'/>
+           <img className='pl-1' src='https://prod-web-static.dealshare.in/_next/static/media/dsLogo.266f84ad.svg' onClick={handle6}/>
            <p className='text-xs text-green-500 font-bold'>Home</p> 
         </div>
         <div className='mt-2'>

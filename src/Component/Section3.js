@@ -78,7 +78,7 @@ const Section3 = () => {
       <div className=" lg:w-[170vw]  w-[300vw]">
         <div className="lg:h-[43vh]  lg:w-full w-[400vw]  lg:gap-8 gap-5 bg-white  flex ">
           <div className="w-[23%]  lg:h-[40vh]  border border-gray-400 rounded-2xl ">
-           <div onClick={handle1} className=" bg-red-500 flex justify-center lg:h-[65%] rounded-t-2xl">
+           <div onClick={handle1} className="flex justify-center lg:h-[65%] rounded-t-2xl">
               <img className="h-full" src="https://media.dealshare.in/img/offer/1731997878288:4107D94F0F_1.webp" />
            </div>
            <div className="h-[25%] ml-2 w-full">

@@ -1,3 +1,4 @@
+import { Button, Drawer } from "@mui/material";
 import React, { useState } from "react";
 
 const Mobile = () => {
@@ -1714,165 +1715,123 @@ const Mobile = () => {
     },
   ];
 
-  const [search,setSearch] = useState(product_list)
+  const [search, setSearch] = useState(product_list);
+  const [data, setData] = useState({ min: 0, max: 0 });
 
-  const [data,setData] = useState ()
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
-  const handlechange =(e)=>{
-    
-    const name = e.target.name
-    const value = e.target.value
-    
-    setData((prevdata)=>({
-      
-      ...prevdata,[name]:value
+  const variant = [
+    { ram: '4 GB' },
+    { ram: '8 GB' },
+    { ram: '12 GB' },
+    { ram: '16 GB' }
+  ];
 
-    }))
-  }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const filtered = product_list.filter((i) => i.price > data.min && i.price < data.max);
+    setSearch(filtered);
+  };
 
+  const handleClear = (e) => {
+    e.preventDefault();
+    setSearch(product_list);
+    setData({ min: 0, max: 0 });
+  };
 
+  const handleBrand = (value) => {
+    const filtered = product_list.filter((data) => data.brand_name === value);
+    setSearch(filtered);
+  };
 
-const variant = [ {
-  ram:"4 GB"
-},
-{
-  ram:"8 GB"
-},
-{
-  ram:"12 GB"
-},{
-  ram:"16 GB"
-}
-]
+  const handleRam = (pro) => {
+    const variant_rom = product_list.filter((item) => item.other_variant_name === pro);
+    setSearch(variant_rom);
+  };
 
+  const handleColorVariant = (val) => {
+    const color = product_list.filter((d) => d.color_variant_name === val);
+    setSearch(color);
+  };
 
- const handleSerch =(e)=>{
+  const [open, setOpen] = useState(false);
 
-  e.preventDefault()
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
 
-  const search = product_list.filter((i)=>(i.price)>data.min&&(i.price)<data.max)
-
-  setSearch(search)
-
-}
-
-const handle1 =(e)=>{
-
-  e.preventDefault()
-
-  setSearch(product_list)
-
-  setData({min:0,max:0})
-}
-
-const handle2 = (value) =>{
- 
-  const filtered = product_list.filter((data)=>data.brand_name===value)
-  setSearch(filtered)
-
-}
-
-const handle3 = (pro) => {
-
-  console.log(pro)
-
-  const variant_rom = product_list.filter((item)=>item.other_variant_name===pro)
-  setSearch(variant_rom)
-}
-
-const handle4 = (val)=>{
-
-  const color = product_list.filter((d)=>d.color_variant_name===val)
-  setSearch(color)
-}
-
-
-
-
- 
-
-  
   return (
-    <div className="flex  w-full gap-5 h-full bg-gray-100  p-10">
-     
-     <div className="w-[20vw] bg-gray-200 p-10 ">
-      
-      <p className=" text-2xl ">Search to Price</p>
 
-        <label className="font-semibold">Minimum_price</label>
-        <input className="px-4 py-2 rounded-lg bg-gray-300 outline-none" value={data?.min}  onChange={handlechange} type="text" name="min"/>
-        <label className="font-semibold">Maximum_price</label>
-        <input className="px-4 py-2 rounded-lg bg-gray-300 outline-none" value={data?.max} onChange={handlechange} type="text" name="max"/>
-
-       <div className="flex gap-x-3">
-       <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white font-semibold" onClick={handleSerch}>Search</button>
-
-      <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white  font-semibold" onClick={handle1}>Clear</button>
-     </div>
-      <div className="flex flex-col">
-      <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white  font-semibold" onClick={()=>handle2("Samsung")}>Samsung</button>
-      <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white  font-semibold" onClick={()=>handle2("Apple")}>Apple</button>
-      <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white  font-semibold" onClick={()=>handle2("Tecno")}>Tecno</button>
-      </div>
-
-      <div className="flex gap-x-10 flex-wrap">
-      {
-         variant.map((i)=>(
-          <div className="">
-              <button className="px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white  font-semibold" onClick={()=>handle3(i.ram)}>{i.ram}</button>
-          </div>
-
-         ))
-      }
-      <div className="w-full flex flex-wrap justify-between">
-      {
-       
+    <>
+    <div className="flex flex-col lg:flex-row w-full gap-5 h-full bg-gray-100 p-5 lg:p-10">
+      {/* Sidebar */}
+      <div className="w-full lg:w-[20vw] bg-gray-200 p-5 lg:p-10 rounded-lg shadow-md">
+        <p className="text-xl lg:text-2xl font-semibold mb-4">Search to Price</p>
+        <label className="font-semibold">Minimum Price</label>
+        <input className="w-full px-4 py-2 rounded-lg bg-gray-300 outline-none mb-2" value={data?.min} onChange={handleChange} type="text" name="min" />
+        <label className="font-semibold">Maximum Price</label>
+        <input className="w-full px-4 py-2 rounded-lg bg-gray-300 outline-none mb-4" value={data?.max} onChange={handleChange} type="text" name="max" />
         
-        product_list?.map((i)=>(
+        <div className="flex gap-x-3">
+          <button className="w-1/2 px-4 py-2 rounded-lg bg-blue-500 mt-3 text-white font-semibold hover:bg-blue-600" onClick={handleSearch}>Search</button>
+          <button className="w-1/2 px-4 py-2 rounded-lg bg-red-500 mt-3 text-white font-semibold hover:bg-red-600" onClick={handleClear}>Clear</button>
+        </div>
+        
+        <div className="flex flex-col mt-4 gap-y-2">
+          {["Samsung", "Apple", "Tecno"].map((brand) => (
+            <button key={brand} className="w-full px-4 py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600" onClick={() => handleBrand(brand)}>{brand}</button>
+          ))}
+        </div>
+        
+        <div className="flex gap-2 flex-wrap mt-4">
+          {variant.map((i) => (
+            <button key={i.ram} className="px-4 py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600" onClick={() => handleRam(i.ram)}>{i.ram}</button>
+          ))}
+        </div>
 
-        <button className="py-2 rounded-lg bg-blue-500 mt-3 text-white w-[40%] hover:bg-red-600  font-semibold" onClick={()=>handle4(i.color_variant_name)}>{i.color_variant_name}</button>
+        <div className="w-full flex flex-wrap justify-between mt-4">
+          {product_list?.map((i) => (
+            <button key={i.color_variant_name} className="py-2 rounded-lg bg-blue-500 mt-3 text-white w-[40%] hover:bg-red-600 font-semibold" onClick={() => handleColorVariant(i.color_variant_name)}>{i.color_variant_name}</button>
+          ))}
+        </div>
 
-
-      ))}
+        
 
       </div>
-      </div>
-       
-      </div>
-      <div className="w-[80vw] gap-5 gap-x-7 flex flex-wrap">
+      
 
+     
 
-      {search.length>0?
-        search?.map((i) => (
-          <div className="w-[18%] lg:h-[45vh] border border-gray-400 rounded-2xl   ">
-            <div className=" bg-[#defed9] flex justify-center lg:h-[65%]  rounded-t-2xl">
-              <img className="h-full rounded-t-2xl bg-[#defed9]" src={i.image} />
+      {/* Product Display */}
+      <div className="w-full lg:w-[80vw] flex flex-wrap gap-5 justify-center">
+        {search.length > 0 ? search.map((i) => (
+          <div key={i.variant_name} className="w-full sm:w-[48%] md:w-[30%] lg:w-[18%] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-[#defed9] flex justify-center p-4">
+              <img className="h-40 object-contain" src={i.image} alt={i.variant_name} />
             </div>
-            <div className="h-[25%] ml-1 w-full">
-              <p className="text-xs mt-2">{i.variant_name}</p>
-              
-              <div className="w-full h-full mt-1 justify-between  flex">
+            <div className="p-3">
+              <p className="text-sm font-semibold">{i.variant_name}</p>
+              <div className="mt-2 flex justify-between items-center">
                 <div>
-                  <p className="mt-2 text-gray-600 text-xs font-semibold">
-                    {i.quantity}
-                  </p>
-                  <p className="text-green-600 font-bold ">{i.price}</p>
-                  <p className="line-through text-gray-600 text-xs font-semibold">
-                    {i.actual_price}
-                  </p>
+                  <p className="text-gray-600 text-xs">{i.quantity}</p>
+                  <p className="text-green-600 font-bold">{i.price}</p>
+                  <p className="line-through text-gray-600 text-xs">{i.actual_price}</p>
                 </div>
-                <div>
-                  <button className="font-bold bg-green-600 hover:bg-orange-500 mt-8 mr-5 px-3 py-0.5 text-white rounded-3xl">
-                    ADD
-                  </button>
-                </div>
+                <button className="bg-green-600 hover:bg-orange-500 px-4 py-1 text-white rounded-lg font-semibold">ADD</button>
               </div>
             </div>
           </div>
-        )):<div className="h-[80vh] flex items-center justify-center w-screen"><img src="https://www.shutterstock.com/image-vector/no-item-found-vector-filled-260nw-2087433073.jpg"/></div>}
+        )) : (
+          <div className="h-[80vh] flex items-center justify-center w-full">
+            <img src="https://www.shutterstock.com/image-vector/no-item-found-vector-filled-260nw-2087433073.jpg" alt="No items found" />
+          </div>
+        )}
       </div>
     </div>
-  );
+    </> );
 };
 
 export default Mobile;
